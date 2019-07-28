@@ -1,12 +1,11 @@
 IMAGE := json0/ruby-reference
-VERSION := 1.0
+VERSION := 1.3
 
 build:
-				sudo docker build -t $(IMAGE) .
+				sudo docker build -t $(IMAGE):$(VERSION) .
 
 push:
-				sudo docker tag $(IMAGE) $(IMAGE)
-				sudo docker push $(IMAGE)
+				sudo docker push $(IMAGE):$(VERSION)
 
 pull:
 				sudo docker pull $(IMAGE):$(VERSION)
