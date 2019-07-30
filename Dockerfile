@@ -18,6 +18,5 @@ COPY . ./
 RUN chown -R rails:rails /opt/blog
 
 # Start the main process.
-EXPOSE 3000
-USER rails
-CMD ["rails", "server", "-b", "0.0.0.0"]
+USER 1000
+CMD ["rails", "server"] 
