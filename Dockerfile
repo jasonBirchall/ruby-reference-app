@@ -15,8 +15,6 @@ WORKDIR /app
 COPY Gemfile* ./
 RUN bundle install
 
-COPY helloworld/. .
-
-USER 1000
+COPY . .
 
 CMD {"rails", "server"]
