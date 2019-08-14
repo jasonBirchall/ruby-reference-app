@@ -1,22 +1,22 @@
-FROM ruby:2.5.1
+FROM ruby:2.6.1-alpine
 
-RUN apt-get update -qq && apt-get install -y nodejs sqlite3
+# Install pre-reqs for building nokogiri & pg gems
+RUN apk --update add --virtual build_deps \
+        build-base ruby-dev libc-dev linux-headers \
+        openssl-dev postgresql-dev libxml2-dev libxslt-dev \
+        nodejs vim
 
-RUN useradd rails --uid 1000 -U -M
+# Create user and group for non-root container
+RUN addgroup -g 1000 -S appgroup && \
+    adduser -u 1000 -S appuser -G appgroup
 
-ENV RAILS_SERVE_STATIC_FILES true
-ENV RAILS_LOG_TO_STDOUT true
+WORKDIR /app
 
-RUN mkdir /opt/blog
-WORKDIR /opt/blog
+COPY helloworld/Gemfile* ./
+RUN bundle install
 
-COPY Gemfile Gemfile.lock ./
-RUN bundle install 
+COPY helloworld/. .
 
-COPY . ./
- 
-RUN chown -R rails:rails /opt/blog
-
-# Start the main process.
 USER 1000
-CMD ["rails", "server"] 
+
+CMD {"rails", "server"]
