@@ -1,24 +1,18 @@
-# README
+# Blog ruby reference application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repostitory will contain a Ruby on Rails blog designed to run in a Kubernetes cluster, which uses the following tools:
+- Docker
+- docker-compose
+- Kubernetes > 1.12
+- Ruby > 2.6
+- Helm 2.x
 
-Things you may want to cover:
+## How to run this application locally
+Simply run:
 
-* Ruby version
+`sudo docker-compose up --build`
 
-* System dependencies
+and access it via:
 
-* Configuration
+`localhost:3000`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
