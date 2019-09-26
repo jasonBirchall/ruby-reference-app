@@ -1,4 +1,4 @@
-FROM ruby:2.6.1-alpine
+FROM ruby:2.6.4-alpine
 
 # Install pre-reqs for building nokogiri & pg gems
 RUN apk --update add --virtual build_deps \
@@ -19,7 +19,7 @@ COPY . .
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/bin/sh"]
 
 EXPOSE 3000
 
