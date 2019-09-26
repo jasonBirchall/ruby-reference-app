@@ -1,5 +1,5 @@
 IMAGE := json0/ruby-reference
-VERSION := 1.8
+VERSION := 1.9
 
 build:
 				sudo docker build -t $(IMAGE):$(VERSION) .
