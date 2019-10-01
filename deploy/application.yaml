@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: blog-rails
-          image: json0/ruby-reference:1.8
+          image: json0/ruby-reference:1.9
           ports:
             - containerPort: 3000
           env:
@@ -23,8 +23,8 @@ spec:
             - name: DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: blog-db-postgresql
-                  key: postgresql-password
+                  name: blog-auth
+                  key: db_password
             - name: DATABASE_HOST
               value: blog-db-postgresql
 
@@ -57,9 +57,9 @@ metadata:
 spec:
   tls:
   - hosts:
-    - rails-blog.apps.jb-test-6.cloud-platform.service.justice.gov.uk
+    - jason-lab.apps.live-1.cloud-platform.service.justice.gov.uk
   rules:
-  - host: rails-blog.apps.jb-test-6.cloud-platform.service.justice.gov.uk
+  - host: jason-lab.apps.live-1.cloud-platform.service.justice.gov.uk
     http:
       paths:
       - path: /

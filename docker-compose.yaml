@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: postgres
+  rails-app:
+    build: ./Dockerfile
+    command: ./start.sh
+    volumes:
+      - ./:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres@db/rails-app_development

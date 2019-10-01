@@ -10,3 +10,5 @@ push:
 pull:
 				sudo docker pull $(IMAGE):$(VERSION)
 
+run:
+				sudo docker run --rm -d $(IMAGE):$(VERSION)
